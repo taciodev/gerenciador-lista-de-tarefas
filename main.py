@@ -4,7 +4,11 @@ def add_task(task_list, task_name):
 
 
 def view_tasks(task_list):
-    ...
+    print("\nLista de tarefas:")
+    for index, task in enumerate(task_list, start=1):
+        status = "✓" if task["completed"] else " "
+        task_name = task['name']
+        print(f"{index} - [{status}] {task_name}")
 
 
 def update_task(task_list):
@@ -36,10 +40,10 @@ while True:
     choice = input("\nQual a sua escolha: ")
 
     if choice == "1":
-        task_name = input("Digite o nome da tarefa que deseja adcionar: ")
+        task_name = input("Digite o nome da tarefa que deseja adicionar: ")
         add_task(tasks, task_name)
     elif choice == "2":
-        ...
+        view_tasks(tasks)
     elif choice == "3":
         ...
     elif choice == "4":
