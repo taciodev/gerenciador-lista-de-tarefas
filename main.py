@@ -20,8 +20,13 @@ def update_task(task_list, task_index, new_task_name):
         print("\n⚠️ ÍNDICE DE TAREFA INVÁLIDO! ⚠️")
 
 
-def complete_task(task_list):
-    ...
+def complete_task(task_list, task_index):
+    adjusted_task_index = int(task_index) - 1
+    if adjusted_task_index >= 0 and adjusted_task_index < len(tasks):
+        task = task_list[adjusted_task_index]
+        task["completed"] = True
+    else:
+        print("\n⚠️ ÍNDICE DE TAREFA INVÁLIDO! ⚠️")
 
 
 def delete_completed_tasks(task_list):
@@ -57,7 +62,10 @@ while True:
             "Digite o novo nome da tarefa: ")
         update_task(tasks, task_index, new_task_name)
     elif choice == "4":
-        ...
+        view_tasks(tasks)
+        print()
+        task_index = input("Digite o número da tarefa que deseja completar: ")
+        complete_task(tasks, task_index)
     elif choice == "5":
         ...
     elif choice == "6":
