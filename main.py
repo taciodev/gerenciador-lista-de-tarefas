@@ -11,8 +11,13 @@ def view_tasks(task_list):
         print(f"{index} - [{status}] {task_name}")
 
 
-def update_task(task_list):
-    ...
+def update_task(task_list, task_index, new_task_name):
+    adjusted_task_index = int(task_index) - 1
+    if adjusted_task_index >= 0 and adjusted_task_index < len(tasks):
+        task = task_list[adjusted_task_index]
+        task["name"] = new_task_name
+    else:
+        print("\n⚠️ ÍNDICE DE TAREFA INVÁLIDO! ⚠️")
 
 
 def complete_task(task_list):
@@ -45,7 +50,12 @@ while True:
     elif choice == "2":
         view_tasks(tasks)
     elif choice == "3":
-        ...
+        view_tasks(tasks)
+        print()
+        task_index = input("Digite o número da tarefa que deseja atualizar: ")
+        new_task_name = input(
+            "Digite o novo nome da tarefa: ")
+        update_task(tasks, task_index, new_task_name)
     elif choice == "4":
         ...
     elif choice == "5":
